@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@angular/cli": "^14.2.6",
+    "@nestjs/cli": "^9.1.4"
+  },
+  "name": "FutTeamBuilder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ElioElioElioElio/FutTeamBuilder.git",
+  "author": "FAUGIER Elliot - SADEGH Khaled",
+  "license": "MIT"
+}
