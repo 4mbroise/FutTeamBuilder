@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Exclude, Expose, Transform, Type } from 'class-transformer'
-import mongoose from 'mongoose';
+import { Exclude, Expose, } from 'class-transformer'
 import { Player } from '../schemas/player.schema';
 
 @Exclude()

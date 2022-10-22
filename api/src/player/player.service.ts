@@ -4,7 +4,6 @@ import { PlayerDao } from './dao/player.dao';
 import { CreatePlayerDto } from './dto/create-player.dto';
 import { UpdatePlayerDto } from './dto/update-player.dto';
 import { PlayerEntity } from './entities/player.entity';
-import { Player } from './player.types';
 
 @Injectable()
 export class PlayerService {
