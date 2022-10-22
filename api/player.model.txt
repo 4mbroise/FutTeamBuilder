@@ -1,0 +1,80 @@
+    sofifaId : number;
+
+    playerUrl: string;
+
+    longName : string;
+
+    playerPositions: string;
+
+    overall : number;
+
+    valueEur: number;
+
+    wageEur: number;
+
+    age: number;
+
+    //Date of Birth
+    dob: Date;
+
+    // Centimeters
+    height : number;
+
+    // kg
+    weight: number;
+    
+    clubTeamId: number;
+
+    clubName: string;
+    
+    leagueName: string;
+
+    nationalityId: number;
+
+    nationalityName: string;
+
+    nationTeamId? : number;
+
+    preferredFoot : string;
+
+    internationalReputation : number;
+
+    realFace : string;
+
+    pace : number;
+
+    shooting :  number;
+
+    passing : number;
+
+    dribbling : number;
+
+    defending : number;
+
+    physic : number;
+
+    skillBallControl : number;
+
+    goalkeepingDiving : number;
+
+    goalkeepingHandling : number;
+
+    goalkeepingKicking : number;
+
+    goalkeepingPositioning : number;
+
+    goalkeepingReflexes : number;
+
+    goalkeepingSpeed : number;
+
+    playerFaceUrl : string;
+
+    clubLogoUrl : string;
+
+    clubFlagUrl : string;
+
+    nationLogoUrl? : string;
+
+    nationFlagUrl : string;
+
+    shortName : string;
