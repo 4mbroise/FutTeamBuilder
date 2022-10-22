@@ -6,12 +6,6 @@ import { Player } from '../schemas/player.schema';
 @Exclude()
 export class PlayerEntity {
     
-    @ApiProperty({
-        name: "_id",
-        "description": "Player ID",
-        example: 90,
-    })
-    @Type(() => String)
     @Exclude()
     _id : string;
 
@@ -26,7 +20,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "playerFaceUrl",
         "description": "Player face picture url",
-        example: 90
+        example: "https://sofifa.com/player/158023/lionel-messi/220002",
     })
     @Expose()
     playerFaceUrl: string;
@@ -34,7 +28,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "longName",
         "description": "Player full name",
-        example: 90
+        example: "Lionel Andrés Messi Cuccittini"
     })
     @Expose()
     longName : string;
@@ -42,7 +36,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "playerPositions",
         "description": "Positions of the player",
-        example: 90
+        example: "RW, ST, CF"
     })
     @Expose()
     playerPositions: string;
@@ -50,7 +44,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "overall",
         "description": "player overall note attribute",
-        example: 90
+        example: 93
     })
     @Expose()
     overall : number;
@@ -58,7 +52,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "valueEur",
         "description": "Player value",
-        example: 90
+        example: 78000000
     })
     @Expose()
     valueEur: number;
@@ -66,7 +60,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "wageEur",
         "description": "Player weekly wage",
-        example: 90
+        example: 320000
     })
     @Expose()
     wageEur: number;
@@ -74,7 +68,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "age",
         "description": "Player age",
-        example: 90
+        example: 34
     })
     @Expose()
     age: number;
@@ -82,7 +76,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "dob",
         "description": "Player date of birth",
-        example: 90
+        example: "1987-06-24T00:00:00.000Z"
     })
     @Expose()
     //Date of Birth
@@ -91,7 +85,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "height",
         "description": "Height of the player (cm)",
-        example: 90
+        example: 170
     })
     @Expose()
     height : number;
@@ -99,17 +93,11 @@ export class PlayerEntity {
     @ApiProperty({
         name: "weight",
         "description": "Weight of the player (kg)e",
-        example: 90
+        example: 72
     })
     @Expose()
     weight: number;
     
-    @ApiProperty({
-        name: "clubTeamId",
-        "description": "Player clubTeamId attribute",
-        example: 90
-    })
-    @Expose()
     clubTeamId: number;
 
     @ApiProperty({
@@ -128,28 +116,16 @@ export class PlayerEntity {
     @Expose()
     leagueName: string;
 
-    @ApiProperty({
-        name: "nationalityId",
-        "description": "Player nationality ID attribute",
-        example: 90
-    })
-    @Expose()
     nationalityId: number;
 
     @ApiProperty({
         name: "nationalityName",
         "description": "Player nationality",
-        example: 90
+        example: "Argentina"
     })
     @Expose()
     nationalityName: string;
 
-    @ApiProperty({
-        name: "nationTeamId",
-        "description": "Player nationTeam ID attribute",
-        example: 90
-    })
-    @Expose()
     nationTeamId? : number;
 
     @ApiProperty({
@@ -168,18 +144,12 @@ export class PlayerEntity {
     @Expose()
     internationalReputation : number;
 
-    @ApiProperty({
-        name: "realFace",
-        "description": "Player real face attribute",
-        example: "Yes"
-    })
-    @Expose()
     realFace : string;
 
     @ApiProperty({
         name: "pace",
         "description": "Player pace attribute",
-        example: 90
+        example: 85
     })
     @Expose()
     pace : number;
@@ -187,7 +157,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "shooting",
         "description": "Player shooting attribute",
-        example: 90
+        example: 92
     })
     @Expose()
     shooting :  number;
@@ -195,7 +165,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "passing",
         "description": "Player passing attribute",
-        example: 90
+        example: 91
     })
     @Expose()
     passing : number;
@@ -203,7 +173,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "dribbling",
         "description": "Player dribbling attribute",
-        example: 90
+        example: 95
     })
     @Expose()
     dribbling : number;
@@ -211,7 +181,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "defending",
         "description": "Player defense attribute",
-        example: 90
+        example: 34
     })
     @Expose()
     defending : number;
@@ -219,7 +189,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "physic",
         "description": "Player physic attribute",
-        example: 90
+        example: 65
     })
     @Expose()
     physic : number;
@@ -227,7 +197,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "skillBallControl",
         "description": "Player ball control attribute",
-        example: 90
+        example: 96
     })
     @Expose()
     skillBallControl : number;
@@ -235,7 +205,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "goalkeepingDiving",
         "description": "Player goal keeping diving attribute",
-        example: 90
+        example: 6
     })
     @Expose()
     goalkeepingDiving : number;
@@ -243,7 +213,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "goalkeepingHandling",
         "description": "Player goal keeping handling attribute",
-        example: 90
+        example: 11
     })
     @Expose()
     goalkeepingHandling : number;
@@ -251,7 +221,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "goalkeepingKicking",
         "description": "Player goal keeping kicking attribute",
-        example: 90
+        example: 15
     })
     @Expose()
     goalkeepingKicking : number;
@@ -259,7 +229,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "goalkeepingPositioning",
         "description": "Player goal keeping positioning attribute",
-        example: 90
+        example: 14
     })
     @Expose()
     goalkeepingPositioning : number;
@@ -267,7 +237,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "goalkeepingReflexes",
         "description": "Player goalkeeping reflexes attribute",
-        example: 90
+        example: 8
     })
     @Expose()
     goalkeepingReflexes : number;
@@ -275,7 +245,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "goalkeepingSpeed",
         "description": "Player goalkeeping Speed attribute",
-        example: 90
+        example: 0
     })
     @Expose()
     goalkeepingSpeed : number;
@@ -283,7 +253,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "clubLogoUrl",
         "description": "Player club logo url",
-        example: 90
+        example: "https://cdn.sofifa.net/teams/73/60.png",
     })
     @Expose()
     clubLogoUrl : string;
@@ -291,7 +261,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "clubFlagUrl",
         "description": "Player club flag url",
-        example: 90
+        example: "https://cdn.sofifa.net/flags/fr.png",
     })
     @Expose()
     clubFlagUrl : string;
@@ -299,7 +269,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "nationLogoUrl",
         "description": "player nation logo url",
-        example: 90
+        example: "https://cdn.sofifa.net/teams/1369/60.png",
     })
     @Expose()
     nationLogoUrl? : string;
@@ -307,7 +277,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "nationFlagUrl",
         "description": "Player nation flag url",
-        example: 90
+        example: "https://cdn.sofifa.net/flags/ar.png",
     })
     @Expose()
     nationFlagUrl : string;
@@ -315,7 +285,7 @@ export class PlayerEntity {
     @ApiProperty({
         name: "shortName",
         "description": "Player short name",
-        example: 90
+        example: "L. Messi"
     })
     @Expose()
     shortName : string;

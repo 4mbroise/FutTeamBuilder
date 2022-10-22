@@ -1,6 +1,6 @@
     sofifaId : number;
 
-    playerUrl: string;
+    playerFaceUrl: string;
 
     longName : string;
 

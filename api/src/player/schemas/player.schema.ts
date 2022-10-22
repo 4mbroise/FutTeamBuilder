@@ -133,3 +133,5 @@ export class Player {
 }
 
 export const PlayerSchema = SchemaFactory.createForClass(Player);
+
+PlayerSchema.index({ sofifaId: 1 }, { unique: true });

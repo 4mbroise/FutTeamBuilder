@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import { ConflictException, Inject, Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
 import { catchError, filter, from, map, mergeMap, Observable, of, throwError, } from 'rxjs';
 import { PlayerDao } from './dao/player.dao';
 import { CreatePlayerDto } from './dto/create-player.dto';
@@ -13,7 +13,23 @@ export class PlayerService {
   }
 
   create(createPlayerDto: CreatePlayerDto) {
-    return 'This action adds a new player';
+
+    return  of(createPlayerDto).pipe(
+      mergeMap((newPreparedPerson: CreatePlayerDto) =>
+        this._playerDao.save(newPreparedPerson),
+      ),
+      catchError((e) =>
+        e.code === 11000
+          ? throwError(
+              () =>
+                new ConflictException(
+                  `the ID #${createPlayerDto.sofifaId} is already used`,
+                ),
+            )
+          : throwError(() => new UnprocessableEntityException(e.message)),
+      ),
+      map((personCreated) => new PlayerEntity(personCreated)),
+    );
   }
 
   findAll() {
@@ -43,6 +59,17 @@ export class PlayerService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} player`;
+    return this._playerDao.findById(id).pipe(
+      catchError((e) =>
+        throwError(() => new UnprocessableEntityException(e.message)),
+      ),
+      mergeMap((person) =>
+        !!person
+          ? of(new PlayerEntity(person))
+          : throwError(
+              () => new NotFoundException(`Player #${id} doesn't exist`),
+            ),
+      ),
+    );
   }
 }
