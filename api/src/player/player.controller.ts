@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
 import { PlayerService } from './player.service';
 import { CreatePlayerDto } from './dto/create-player.dto';
 import { UpdatePlayerDto } from './dto/update-player.dto';
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 
 @ApiTags("player")
 @Controller('player')
+@UseInterceptors(ClassSerializerInterceptor)
 export class PlayerController {
   constructor(private readonly playerService: PlayerService) {}
 

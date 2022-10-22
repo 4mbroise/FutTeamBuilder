@@ -4,7 +4,15 @@ import mongoose, { Document } from "mongoose";
 export type PlayerDocument = Player & Document
 
 @Schema({
-    collection: "players"
+    collection: "players",
+    toJSON: {
+        virtuals: true,
+        transform: (doc: any, ret: any) => {
+          // delete obsolete data
+          delete ret._id;
+        },
+      },
+    versionKey: false,
 })
 export class Player {
 
@@ -57,10 +65,10 @@ export class Player {
     leagueName: string;
 
     @Prop()
-    nationalityId: number;
+    nationalityId?: number;
 
     @Prop()
-    nationalityName: string;
+    nationalityName?: string;
 
     @Prop()
     nationTeamId? : number;
@@ -114,19 +122,19 @@ export class Player {
     goalkeepingSpeed : number;
 
     @Prop()
-    playerFaceUrl : string;
+    playerFaceUrl? : string;
 
     @Prop()
-    clubLogoUrl : string;
+    clubLogoUrl? : string;
 
     @Prop()
-    clubFlagUrl : string;
+    clubFlagUrl? : string;
 
     @Prop()
     nationLogoUrl? : string;
 
     @Prop()
-    nationFlagUrl : string;
+    nationFlagUrl? : string;
 
     @Prop()
     shortName : string;

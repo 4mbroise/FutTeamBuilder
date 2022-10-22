@@ -55,11 +55,22 @@ export class PlayerService {
   }
 
   update(id: number, updatePlayerDto: UpdatePlayerDto) {
-    return `This action updates a #${id} player`;
+    return this._playerDao.update(id, updatePlayerDto).pipe(
+      catchError((e) =>
+        throwError(() => new UnprocessableEntityException(e.message)),
+      ),
+      mergeMap((personUpdated) =>
+        !!personUpdated
+          ? of(new PlayerEntity(personUpdated))
+          : throwError(
+              () => new NotFoundException(`Player #${id} doesn't exist`),
+            ),
+      ),
+    );
   }
 
   remove(id: number) {
-    return this._playerDao.findById(id).pipe(
+    return this._playerDao.remove(id).pipe(
       catchError((e) =>
         throwError(() => new UnprocessableEntityException(e.message)),
       ),

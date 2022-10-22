@@ -26,7 +26,7 @@ export class CreatePlayerDto {
     })
     @IsString()
     @IsOptional()
-    playerFaceUrl: string;
+    playerFaceUrl? : string;
 
     @ApiPropertyOptional({
         name: "longName",
@@ -35,7 +35,7 @@ export class CreatePlayerDto {
     })
     @IsString()
     @IsOptional()
-    longName : string;
+    longName? : string;
 
     @ApiPropertyOptional({
         name: "playerPositions",
@@ -44,7 +44,7 @@ export class CreatePlayerDto {
     })
     @IsString()
     @IsOptional()
-    playerPositions: string;
+    playerPositions? : string;
 
     @ApiProperty({
         name: "overall",
@@ -74,7 +74,7 @@ export class CreatePlayerDto {
     @IsNumber()
     @Min(0)
     @IsOptional()
-    wageEur: number;
+    wageEur? : number;
 
     @ApiPropertyOptional({
         name: "age",
@@ -84,7 +84,7 @@ export class CreatePlayerDto {
     @IsInt()
     @Min(0)
     @IsOptional()
-    age: number;
+    age? : number;
 
     @ApiPropertyOptional({
         name: "dob",
@@ -93,7 +93,7 @@ export class CreatePlayerDto {
     })
     @IsDateString()
     @IsOptional()
-    dob: String;
+    dob? : String;
 
     @ApiPropertyOptional({
         name: "height",
@@ -103,7 +103,7 @@ export class CreatePlayerDto {
     @IsInt()
     @Min(0)
     @IsOptional()
-    height : number;
+    height? : number;
 
     @ApiPropertyOptional({
         name: "weight",
@@ -113,13 +113,7 @@ export class CreatePlayerDto {
     @IsInt()
     @Min(0)
     @IsOptional()
-    weight: number;
-    
-    
-    @IsInt()
-    @Min(0)
-    @IsOptional()
-    clubTeamId: number;
+    weight? : number;
 
     @ApiPropertyOptional({
         name: "leagueName",
@@ -128,7 +122,7 @@ export class CreatePlayerDto {
     })
     @IsString()
     @IsOptional()
-    clubName: string;
+    clubName? : string;
     
     @ApiPropertyOptional({
         name: "leagueName",
@@ -137,17 +131,7 @@ export class CreatePlayerDto {
     })
     @IsString()
     @IsOptional()
-    leagueName: string;
-
-    @ApiPropertyOptional({
-        name: "nationalityName",
-        "description": "Player nationality",
-        example: "Argentina"
-    })
-    @IsInt()
-    @Min(0)
-    @IsOptional()
-    nationalityId: number;
+    leagueName? : string;
 
     @ApiProperty({
         name: "nationalityName",
@@ -159,11 +143,6 @@ export class CreatePlayerDto {
     @IsNotEmpty()
     nationalityName: string;
 
-    @IsString()
-    @Min(0)
-    @IsOptional()
-    nationTeamId? : number;
-
     @ApiPropertyOptional({
         name: "preferredFoot",
         "description": "Player preferred foot",
@@ -172,10 +151,10 @@ export class CreatePlayerDto {
     @IsString()
     @IsIn(["Right", "Left"])
     @IsOptional()
-    preferredFoot : string;
+    preferredFoot? : string;
 
     @ApiPropertyOptional({
-        name: "pace",
+        name: "internationalReputation",
         "description": "Player international Reputation attribute",
         example: 5
     })
@@ -183,12 +162,7 @@ export class CreatePlayerDto {
     @IsOptional()
     @Min(1)
     @Max(5)
-    internationalReputation : number;
-
-    
-    @IsString()
-    @Optional()
-    realFace : string;
+    internationalReputation? : number;
 
     @ApiProperty({
         name: "pace",
@@ -349,7 +323,7 @@ export class CreatePlayerDto {
     })
     @IsString()
     @IsOptional()
-    clubFlagUrl : string;
+    clubFlagUrl? : string;
 
     @ApiPropertyOptional({
         name: "nationLogoUrl",
@@ -367,7 +341,7 @@ export class CreatePlayerDto {
     })
     @IsString()
     @IsOptional()
-    nationFlagUrl : string;
+    nationFlagUrl? : string;
 
     @ApiProperty({
         name: "shortName",

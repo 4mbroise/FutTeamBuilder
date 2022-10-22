@@ -4,6 +4,7 @@ import { Model } from "mongoose";
 import { from, map, Observable } from "rxjs";
 import { threadId } from "worker_threads";
 import { CreatePlayerDto } from "../dto/create-player.dto";
+import { UpdatePlayerDto } from "../dto/update-player.dto";
 import { Player } from "../schemas/player.schema";
 import { PlayerDao } from "./player.dao";
 
@@ -22,10 +23,11 @@ export class PlayerMongo implements PlayerDao{
     save(player: CreatePlayerDto): Observable<Player> {
         return from(new this._playerModel(player).save())
     }
-    update(id: number, player: Player): Observable<Player> {
-        throw new Error("Method not implemented.");
+    update(id: number, player: UpdatePlayerDto): Observable<Player> {
+        return from(this._playerModel.findOneAndUpdate({ sofifaId:id }, player, {new:true, runValidators:true}).lean());
     }
     remove(id: number): Observable<Player> {
+        console.log("remove")
         return from(this._playerModel.findOneAndRemove({sofifaId : id}).lean())
     }
     
