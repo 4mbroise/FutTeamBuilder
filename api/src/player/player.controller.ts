@@ -2,9 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PlayerService } from './player.service';
 import { CreatePlayerDto } from './dto/create-player.dto';
 import { UpdatePlayerDto } from './dto/update-player.dto';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { PlayerEntity } from './entities/player.entity';
+import { Observable } from 'rxjs';
 
+@ApiTags("player")
 @Controller('player')
 export class PlayerController {
   constructor(private readonly playerService: PlayerService) {}
@@ -25,8 +27,13 @@ export class PlayerController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.playerService.findOne(+id);
+  @ApiOkResponse({
+    description: 'Returns a player with a given id',
+    type: PlayerEntity,
+    isArray: false
+  })
+  findOne(@Param('id') id: number) {
+    return this.playerService.findOne(id);
   }
 
   @Patch(':id')

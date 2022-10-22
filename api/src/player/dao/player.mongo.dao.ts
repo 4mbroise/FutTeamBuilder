@@ -17,6 +17,7 @@ export class PlayerMongo implements PlayerDao{
         return from(this._playerModel.find({}).lean()).pipe( map( (people) => [].concat(people)))
     }
     findById(id: number): Observable<void | Player> {
+        return from(this._playerModel.findOne({sofifaId : id}).lean())
         throw new Error("Method not implemented.");
     }
     save(player: Player): Observable<Player> {

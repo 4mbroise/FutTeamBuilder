@@ -1,5 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { filter, map, } from 'rxjs';
+import { Inject, Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import { catchError, filter, from, map, mergeMap, Observable, of, throwError, } from 'rxjs';
 import { PlayerDao } from './dao/player.dao';
 import { CreatePlayerDto } from './dto/create-player.dto';
 import { UpdatePlayerDto } from './dto/update-player.dto';
@@ -21,11 +21,21 @@ export class PlayerService {
       filter(Boolean),
       map((player) => (player || []).map((player) => new PlayerEntity(player)))
     )
-    return `This action returns all player`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} player`;
+  findOne(id: number) : Observable<PlayerEntity> {
+    return this._playerDao.findById(id).pipe(
+      catchError((e) =>
+        throwError(() => new UnprocessableEntityException(e.message)),
+      ),
+      mergeMap((person) =>
+        !!person
+          ? of(new PlayerEntity(person))
+          : throwError(
+              () => new NotFoundException(`Player #${id} doesn't exist`),
+            ),
+      ),
+    );
   }
 
   update(id: number, updatePlayerDto: UpdatePlayerDto) {
