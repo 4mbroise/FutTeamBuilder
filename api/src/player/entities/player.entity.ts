@@ -5,15 +5,17 @@ import { Player } from '../schemas/player.schema';
 @Exclude()
 export class PlayerEntity {
     
+    
     @Expose()
-    @ApiProperty({
-        name:"_id",
-        description: "Player ID",
-        example: "6352b7036d2f2c39d71b6482"
-    })
     @Type( () => String)
-    _id : string;
+    @ApiProperty({
+        name: "Id",
+        "description": "Player sofifa ID",
+        example: "6352b7036d2f2c39d71b6491"
+    })
+    _id : any;
 
+    
     @Exclude()
     sofifaId : number;
 

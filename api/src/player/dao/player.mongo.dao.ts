@@ -1,8 +1,6 @@
 import { InjectModel } from "@nestjs/mongoose";
-import { cp } from "fs";
 import { Model } from "mongoose";
 import { from, map, Observable } from "rxjs";
-import { threadId } from "worker_threads";
 import { CreatePlayerDto } from "../dto/create-player.dto";
 import { UpdatePlayerDto } from "../dto/update-player.dto";
 import { Player } from "../schemas/player.schema";

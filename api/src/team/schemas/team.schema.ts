@@ -1,16 +1,14 @@
-import { Prop, Schema } from "@nestjs/mongoose";
-import mongoose from "mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import mongoose, { Document } from "mongoose";
+
+export type TeamDocument = Team & Document
 
 @Schema({
-    collection: "teams",
-    toJSON: {
-        virtuals: true,
-        transform: (doc: any, ret: any) => {
-          // delete obsolete data
-          delete ret._id;
-        },
-      },
-    versionKey: false,
+  collection: "teams",
+  toJSON: {
+      virtuals: true,
+    },
+  versionKey: false,
 })
 export class Team {
     @Prop({
@@ -19,9 +17,38 @@ export class Team {
       })
     _id: any;
 
-    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Player'}]})
+    @Prop()
+    striker: string;
 
+    @Prop()
+    rightForward: string;
+
+    @Prop()
+    centerMiddle1: string;
+
+    @Prop()
+    centerMiddle2: string;
+
+    @Prop()
+    centerMiddle3: string;
+
+    @Prop()
+    leftBack: string;
+
+    @Prop()
+    centerBack1: string;
+
+    @Prop()
+    centerBack2: string;
+
+    @Prop()
+    rightBack: string;
+
+    @Prop()
+    goalKeeper: string;
 
     @Prop()
     name: String
 }
+
+export const TeamSchema = SchemaFactory.createForClass(Team);
