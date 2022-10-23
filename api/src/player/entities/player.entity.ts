@@ -1,19 +1,20 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Exclude, Expose, } from 'class-transformer'
+import { Exclude, Expose, Type, } from 'class-transformer'
 import { Player } from '../schemas/player.schema';
 
 @Exclude()
 export class PlayerEntity {
     
-    @Exclude()
+    @Expose()
+    @ApiProperty({
+        name:"_id",
+        description: "Player ID",
+        example: "6352b7036d2f2c39d71b6482"
+    })
+    @Type( () => String)
     _id : string;
 
-    @ApiProperty({
-        name: "sofifaId",
-        "description": "Player sofifa ID",
-        example: 90
-    })
-    @Expose()
+    @Exclude()
     sofifaId : number;
 
     @ApiProperty({

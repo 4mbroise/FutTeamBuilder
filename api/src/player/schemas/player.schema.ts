@@ -7,10 +7,6 @@ export type PlayerDocument = Player & Document
     collection: "players",
     toJSON: {
         virtuals: true,
-        transform: (doc: any, ret: any) => {
-          // delete obsolete data
-          delete ret._id;
-        },
       },
     versionKey: false,
 })

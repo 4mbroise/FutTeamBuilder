@@ -5,8 +5,8 @@ import { Player } from "../schemas/player.schema";
 
 export interface PlayerDao{
     find(): Observable<Player[] | void>
-    findById(id: number): Observable<Player | void>
+    findById(id: string): Observable<Player | void>
     save(player: CreatePlayerDto): Observable<Player>
-    update(id: number, player:UpdatePlayerDto): Observable<Player>
-    remove(id: number): Observable<Player>
+    update(id: string, player:UpdatePlayerDto): Observable<Player>
+    remove(id: string): Observable<Player>
 }

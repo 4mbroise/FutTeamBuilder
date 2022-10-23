@@ -17,18 +17,18 @@ export class PlayerMongo implements PlayerDao{
         console.log("ouaf")       
         return from(this._playerModel.find({}).lean()).pipe( map( (people) => [].concat(people)))
     }
-    findById(id: number): Observable<void | Player> {
-        return from(this._playerModel.findOne({sofifaId : id}).lean())
+    findById(id: string): Observable<void | Player> {
+        return from(this._playerModel.findById(id).lean())
     }
     save(player: CreatePlayerDto): Observable<Player> {
-        return from(new this._playerModel(player).save())
+        return from(new this._playerModel(player).save().then( value => value.toJSON()))
     }
-    update(id: number, player: UpdatePlayerDto): Observable<Player> {
-        return from(this._playerModel.findOneAndUpdate({ sofifaId:id }, player, {new:true, runValidators:true}).lean());
+    update(id: string, player: UpdatePlayerDto): Observable<Player> {
+        return from(this._playerModel.findByIdAndUpdate(id, player, {new:true, runValidators:true}).lean());
     }
-    remove(id: number): Observable<Player> {
+    remove(id: string): Observable<Player> {
         console.log("remove")
-        return from(this._playerModel.findOneAndRemove({sofifaId : id}).lean())
+        return from(this._playerModel.findByIdAndRemove(id).lean())
     }
     
 }

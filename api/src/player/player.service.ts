@@ -22,7 +22,7 @@ export class PlayerService {
           ? throwError(
               () =>
                 new ConflictException(
-                  `the ID #${createPlayerDto.sofifaId} is already used`,
+                  `the ID #${createPlayerDto._id} is already used`,
                 ),
             )
           : throwError(() => new UnprocessableEntityException(e.message)),
@@ -38,7 +38,7 @@ export class PlayerService {
     )
   }
 
-  findOne(id: number) : Observable<PlayerEntity> {
+  findOne(id: string) : Observable<PlayerEntity> {
     return this._playerDao.findById(id).pipe(
       catchError((e) =>
         throwError(() => new UnprocessableEntityException(e.message)),
@@ -53,7 +53,7 @@ export class PlayerService {
     );
   }
 
-  update(id: number, updatePlayerDto: UpdatePlayerDto) {
+  update(id: string, updatePlayerDto: UpdatePlayerDto) {
     return this._playerDao.update(id, updatePlayerDto).pipe(
       catchError((e) =>
         throwError(() => new UnprocessableEntityException(e.message)),
@@ -68,7 +68,7 @@ export class PlayerService {
     );
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this._playerDao.remove(id).pipe(
       catchError((e) =>
         throwError(() => new UnprocessableEntityException(e.message)),

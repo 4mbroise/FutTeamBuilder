@@ -33,17 +33,17 @@ export class PlayerController {
     type: PlayerEntity,
     isArray: false
   })
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     return this.playerService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updatePlayerDto: UpdatePlayerDto) {
+  update(@Param('id') id: string, @Body() updatePlayerDto: UpdatePlayerDto) {
     return this.playerService.update(id, updatePlayerDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number) {
+  remove(@Param('id') id: string) {
     return this.playerService.remove(id);
   }
 }
