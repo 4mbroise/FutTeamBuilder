@@ -6,15 +6,6 @@ const country = ["United States", "Canada", "Afghanistan", "Albania", "Algeria",
 export class UpdatePlayerDto {
     
     @ApiPropertyOptional({
-        name: "_id",
-        "description": "Player ID",
-        example: "6352b7036d2f2c39d71b6482"
-    })
-    @IsMongoId()
-    @IsOptional()
-    _id : number;
-
-    @ApiPropertyOptional({
         name: "playerFaceUrl",
         "description": "Player face picture url",
         example: "https://sofifa.com/player/158023/lionel-messi/220002",

@@ -1,5 +1,5 @@
-import { ConflictException, Inject, Injectable, UnprocessableEntityException } from '@nestjs/common';
-import { catchError, map, mergeMap, of, throwError } from 'rxjs';
+import { ConflictException, Inject, Injectable, NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import { catchError, filter, map, mergeMap, of, throwError } from 'rxjs';
 import { TeamDao } from './dao/team.dao';
 import { CreateTeamDto } from './dto/create-team.dto';
 import { UpdateTeamDto } from './dto/update-team.dto';
@@ -13,7 +13,6 @@ export class TeamService {
   }
 
   create(createTeamDto: CreateTeamDto) {
-
     return  of(createTeamDto).pipe(
       mergeMap((newPreparedPerson: CreateTeamDto) =>
         this._teamDao.save(newPreparedPerson),
@@ -30,23 +29,57 @@ export class TeamService {
       ),
       map((personCreated) => new TeamEntity(personCreated)),
     );
-
-    return this._teamDao.save(createTeamDto);
   }
 
   findAll() {
-    return `This action returns all team`;
+    return this._teamDao.find().pipe(
+      filter(Boolean),
+      map((player) => (player || []).map((player) => new TeamEntity(player)))
+    )
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} team`;
+  findOne(id: string) {
+    return this._teamDao.findById(id).pipe(
+      catchError((e) =>
+        throwError(() => new UnprocessableEntityException(e.message)),
+      ),
+      mergeMap((person) =>
+        !!person
+          ? of(new TeamEntity(person))
+          : throwError(
+              () => new NotFoundException(`Player #${id} doesn't exist`),
+            ),
+      ),
+    );
   }
 
-  update(id: number, updateTeamDto: UpdateTeamDto) {
-    return `This action updates a #${id} team`;
+  update(id: string, updateTeamDto: UpdateTeamDto) {
+    return this._teamDao.update(id, updateTeamDto).pipe(
+      catchError((e) =>
+        throwError(() => new UnprocessableEntityException(e.message)),
+      ),
+      mergeMap((personUpdated) =>
+        !!personUpdated
+          ? of(new TeamEntity(personUpdated))
+          : throwError(
+              () => new NotFoundException(`Player #${id} doesn't exist`),
+            ),
+      ),
+    );
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} team`;
+  remove(id: string) {
+    return this._teamDao.remove(id).pipe(
+      catchError((e) =>
+        throwError(() => new UnprocessableEntityException(e.message)),
+      ),
+      mergeMap((person) =>
+        !!person
+          ? of(new TeamEntity(person))
+          : throwError(
+              () => new NotFoundException(`Player #${id} doesn't exist`),
+            ),
+      ),
+    );
   }
 }

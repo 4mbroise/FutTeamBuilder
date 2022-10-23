@@ -1,6 +1,6 @@
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { from, Observable, of } from "rxjs";
+import { from, map, Observable, of } from "rxjs";
 import { CreateTeamDto } from "../dto/create-team.dto";
 import { UpdateTeamDto } from "../dto/update-team.dto";
 import { TeamEntity } from "../entities/team.entity";
@@ -13,21 +13,20 @@ export class TeamMongo implements TeamDao{
     }
 
     find(): Observable<void | TeamEntity[]> {
-        throw new Error("Method not implemented.");
+        return from(this._teamModel.find({}).lean()).pipe( map( (people) => [].concat(people)))
     }
     findById(id: string): Observable<void | TeamEntity> {
-        throw new Error("Method not implemented.");
+        return from(this._teamModel.findById(id).then(a => new TeamEntity(a.toJSON())))
     }
     save(team: CreateTeamDto): Observable<TeamEntity> {       
         new this._teamModel(team).save().then( a => console.log(a.toJSON()))
         return from(new this._teamModel(team).save().then( a => new TeamEntity(a.toJSON())))
-        return undefined
     }
     update(id: string, team: UpdateTeamDto): Observable<TeamEntity> {
-        throw new Error("Method not implemented.");
+        return from(this._teamModel.findByIdAndUpdate(id, team, {new:true, runValidators:true}).then( a => new TeamEntity(a.toJSON())))
     }
     remove(id: string): Observable<TeamEntity> {
-        throw new Error("Method not implemented.");
+        return from(this._teamModel.findByIdAndRemove(id).then( a => new TeamEntity(a.toJSON())));
     }
 
 }
