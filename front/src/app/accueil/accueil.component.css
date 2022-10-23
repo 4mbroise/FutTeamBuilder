@@ -1,0 +1,35 @@
+
+.back{
+  height: 100%;  
+  width: 100%;  
+  background-image: url("../../assets/images/ballon.jpg");  
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden; 
+}
+
+.comp{
+  padding: 20px;
+  background: green;
+  color: white;
+  border-radius: 15px;
+  background-image: url('../../assets/images/Ronaldo.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden; 
+}
+
+.comp:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.view{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:5px;
+  padding: 10px;
+}
+
+
+
