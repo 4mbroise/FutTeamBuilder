@@ -135,7 +135,7 @@ export class CreateTeamDto {
     centerBack2: string
 
     @ApiProperty({
-        name : "RightBack",
+        name : "rightBack",
         description : "Player ID playing at the Right back position",
         example: "6352b7036d2f2c39d71b6491",
     })
@@ -144,7 +144,7 @@ export class CreateTeamDto {
     @IsMongoId()
     @Type(()=>String)
     @Validate(PlayerExists)
-    RightBack: string
+    rightBack: string
 
     @ApiProperty({
         name : "goalKeeper",

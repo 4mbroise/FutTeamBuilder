@@ -21,6 +21,9 @@ export class Team {
     striker: string;
 
     @Prop()
+    leftForward: string;
+
+    @Prop()
     rightForward: string;
 
     @Prop()
