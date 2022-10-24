@@ -15,7 +15,7 @@ export class CardComponent implements OnInit {
    * Component constructor
    */
   constructor() {
-    this._player = {} as Player;
+    this._player = {longName:'Khaled'} as Player;
   }
 
   /**

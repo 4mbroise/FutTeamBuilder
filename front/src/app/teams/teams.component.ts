@@ -1,25 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Player } from '../shared/types/player.type';
+import { Team } from '../shared/types/team.type';
 
 @Component({
-  selector: 'app-players',
-  templateUrl: './players.component.html',
-  styleUrls: ['./players.component.css']
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.css']
 })
-export class PlayersComponent implements OnInit {
+export class TeamsComponent implements OnInit {
 
-// private property to store players value
-private _players: Player[];
-// private property to store all backend URLs
-private readonly _backendURL: any;
-
+    // private property to store players value
+  private _teams: Team[];
+  // private property to store all backend URLs
+  private readonly _backendURL: any;
+ 
   /**
    * Component constructor
    */
-  constructor(private _http: HttpClient) {
-    this._players = [{longName:'Khaled', playerFaceUrl:'../../assets/images/Ronaldo.jpg'} as Player];
+   constructor(private _http: HttpClient) {
+    this._teams = [{name:'Liverpool'} as Team];
     this._backendURL = {};
 
     // build backend base url
@@ -36,16 +36,16 @@ private readonly _backendURL: any;
   /**
    * Returns private property _people
    */
-  get players(): Player[] {
-    return this._players;
+  get teams(): Team[] {
+    return this._teams;
   }
 
   /**
    * OnInit implementation
    */
   ngOnInit(): void {
-    this._http.get<Player[]>(this._backendURL.allPeople)
-      .subscribe({ next: (players: Player[]) => this._players = players });
+    this._http.get<Team[]>(this._backendURL.allTeams)
+      .subscribe({ next: (teams: Team[]) => this._teams = teams });
   }
 
 }

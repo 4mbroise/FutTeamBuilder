@@ -20,5 +20,7 @@ export class AccueilComponent implements OnInit {
 
   goToPlayers() { this._router.navigate(['/players/']);}
 
+  goToTeams() { this._router.navigate(['/teams/']); }
+
 }
 

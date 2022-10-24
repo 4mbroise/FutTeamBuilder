@@ -9,7 +9,8 @@ export const environment = {
     host: 'localhost',
     port: '3000',
     endpoints: {
-      allPlayers: '/players',
+      allPlayers: '/player',
+      allTeams : '/team'
     }
   }
 };

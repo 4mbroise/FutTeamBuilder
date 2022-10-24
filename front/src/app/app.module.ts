@@ -11,6 +11,10 @@ import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { HttpClientModule } from '@angular/common/http';
+import { TeamComponent } from './team/team.component';
+import { TeamCardComponent } from './shared/team-card/team-card.component';
+import { TeamsComponent } from './teams/teams.component';
 
 
 @NgModule({
@@ -20,7 +24,10 @@ import { MatListModule } from '@angular/material/list';
     BuildTeamComponent,
     PlayersComponent,
     CardComponent,
-    PlayerComponent
+    PlayerComponent,
+    TeamComponent,
+    TeamCardComponent,
+    TeamsComponent
     ],
   imports: [
     BrowserModule,
@@ -28,6 +35,7 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatListModule,
     MatIconModule,
+    HttpClientModule,
     AppRoutingModule
     ],
 
