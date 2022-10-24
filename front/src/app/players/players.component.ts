@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { PlayersService } from '../shared/services/players.service';
 import { Player } from '../shared/types/player.type';
 
 @Component({
@@ -15,37 +17,28 @@ private _players: Player[];
 // private property to store all backend URLs
 private readonly _backendURL: any;
 
-  /**
-   * Component constructor
-   */
-  constructor(private _http: HttpClient) {
-    this._players = [{longName:'Khaled', playerFaceUrl:'../../assets/images/Ronaldo.jpg'} as Player];
-    this._backendURL = {};
+/**
+ * Component constructor
+ */
+constructor(private _router: Router, private _playerService: PlayersService) {
+  this._players = [];
+}
 
-    // build backend base url
-    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
-    if (environment.backend.port) {
-      baseUrl += `:${environment.backend.port}`;
-    }
+/**
+ * Returns private property _people
+ */
+get players(): Player[] {
+  return this._players;
+}
 
-    // build all backend urls
-    // @ts-ignore
-    Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
-  }
-
-  /**
-   * Returns private property _people
-   */
-  get players(): Player[] {
-    return this._players;
-  }
-
-  /**
-   * OnInit implementation
-   */
-  ngOnInit(): void {
-    this._http.get<Player[]>(this._backendURL.allPeople)
-      .subscribe({ next: (players: Player[]) => this._players = players });
-  }
+/**
+ * OnInit implementation
+ */
+ngOnInit(): void {
+  this._playerService
+    .fetchAll()
+    .subscribe( { next: (player: Player[]) => this._players = player} )
+  console.log("players = "+this.players)
+}
 
 }

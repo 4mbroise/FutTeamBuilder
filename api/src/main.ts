@@ -13,6 +13,8 @@ async function bootstrap() {
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
+  app.enableCors();
+
   app.useGlobalPipes(new ValidationPipe());
 
   const swaggerOptions = new DocumentBuilder()

@@ -1,6 +1,7 @@
+import { Stat } from "./stat.type";
+
 export type Player = {
-    _id : any;
-    sofifaId : number;
+    _id : string;
     playerFaceUrl: string;
     longName : string;
     playerPositions: string;
@@ -11,15 +12,16 @@ export type Player = {
     dob: Date;
     height : number;
     weight: number;
-    clubTeamId: number;
     clubName: string;
     leagueName: string;
-    nationalityId: number;
     nationalityName: string;
-    nationTeamId? : number;
     preferredFoot : string;
     internationalReputation : number;
-    realFace : string;
+    
+    //stats:Stat[]
+
+    //--------------STATS------------------
+    //--- NOT GOAL KEEPER
     pace : number;
     shooting :  number;
     passing : number;
@@ -27,12 +29,15 @@ export type Player = {
     defending : number;
     physic : number;
     skillBallControl : number;
+    //--- GOAL KEEPER
     goalkeepingDiving : number;
     goalkeepingHandling : number;
     goalkeepingKicking : number;
     goalkeepingPositioning : number;
     goalkeepingReflexes : number;
     goalkeepingSpeed : number;
+
+
     clubLogoUrl : string;
     clubFlagUrl : string;
     nationLogoUrl? : string;
