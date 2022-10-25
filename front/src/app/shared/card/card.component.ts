@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Player } from '../types/player.type';
 import { Stat } from '../types/stat.type';
 
@@ -8,16 +8,28 @@ import { Stat } from '../types/stat.type';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit{
+
+  @ViewChild('tile') divToMeasureElement! : ElementRef;
+
 
   // private property to store player value
   private _player: Player;
+  private _tileDimension: number = 0;
 
   /**
    * Component constructor
    */
   constructor() {
     this._player = {} as Player;
+  }
+
+  get tileDimension(): number {
+    return (window.innerWidth/4)/3;
+  }
+
+  get BigTileDimension(): number {
+    return ((window.innerWidth/4)/3)*2;
   }
 
   /**

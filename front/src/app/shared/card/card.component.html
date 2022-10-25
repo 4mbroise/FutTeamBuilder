@@ -12,43 +12,43 @@
     </mat-card-title-group>
     <mat-card-content>
       <mat-grid-list cols="3">
-        <mat-grid-tile  [colspan]="2" [rowspan]="2">
-          <stat [stat]="overall"></stat>
+        <mat-grid-tile id="tile"  [colspan]="2" [rowspan]="2">
+          <stat [stat]="overall" [dimension]="BigTileDimension"></stat>
         </mat-grid-tile>
 
         <ng-template [ngIf]="isGoalKeeper">
-          <mat-grid-tile>
-            <stat [stat]="diving"></stat>
+          <mat-grid-tile >
+            <stat [stat]="diving" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="kicking"></stat>
+            <stat [stat]="kicking" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="positioning"></stat>
+            <stat [stat]="positioning" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="reflexes"></stat>
+            <stat [stat]="reflexes" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="speed"></stat>
+            <stat [stat]="speed" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
         </ng-template>
 
         <ng-template [ngIf]="!isGoalKeeper">
           <mat-grid-tile>
-            <stat [stat]="shooting"></stat>
+            <stat [stat]="shooting" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="passing"></stat>
+            <stat [stat]="passing" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="dribbling"></stat>
+            <stat [stat]="dribbling" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="defending"></stat>
+            <stat [stat]="defending" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
           <mat-grid-tile>
-            <stat [stat]="physic"></stat>
+            <stat [stat]="physic" [dimension]="tileDimension"></stat>
           </mat-grid-tile>
         </ng-template>
         

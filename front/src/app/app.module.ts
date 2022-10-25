@@ -30,6 +30,7 @@ import { StatComponent } from './shared/stat/stat.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TeamDetailsComponent } from './team-details/team-details.component';
+import { TeamBuilderComponent } from './team-builder/team-builder.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
     UpdateComponent,
     StatComponent,
     TeamDetailsComponent,
+    TeamBuilderComponent,
     ],
   imports: [
     BrowserModule,

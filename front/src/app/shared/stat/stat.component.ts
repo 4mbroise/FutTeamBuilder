@@ -1,5 +1,5 @@
-import { Component, Input, NgModule } from '@angular/core';
-import { NgxChartsModule, LegendPosition, Color, ScaleType } from '@swimlane/ngx-charts';
+import { Component, Host, Input, NgModule } from '@angular/core';
+import { NgxChartsModule, LegendPosition, Color, ScaleType, CardComponent } from '@swimlane/ngx-charts';
 import { Stat } from '../types/stat.type';
 
 @Component({
@@ -10,10 +10,20 @@ import { Stat } from '../types/stat.type';
 export class StatComponent {
   
   private _stat: Stat;
+  private _dimension: number;
 
   @Input()
   set stat(person: Stat) {
     this._stat = person;
+  }
+
+  @Input()
+  set dimension(dim: number) {
+    this._dimension = dim;
+  }
+
+  get dimension(): number {
+    return this._dimension;
   }
 
   get unit(): string {
@@ -55,6 +65,7 @@ export class StatComponent {
 
   constructor() {
     this._stat = {} as Stat
+    this._dimension = 0
   }
 
 }

@@ -103,9 +103,12 @@ export class TeamsComponent implements OnInit {
     this._dialogStatus = 'active';
 
     // open modal
-    this._teamsDialog = this._dialog.open(DialogComponent, {
-      width: '500px',
-      disableClose: true,
+    this._teamsDialog = this._dialog.open(DialogComponent,
+    {
+      maxHeight: "100% !important",
+      maxWidth: "100% !important",
+      width: "100%",
+      height: "100%",
     });
 
     // subscribe to afterClosed observable to set dialog status and do process

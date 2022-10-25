@@ -30,6 +30,7 @@ export class TeamDetailsComponent implements OnInit {
    this._isTeam = false;
    this._backendURL = {};
 
+   
    // build backend base url
    let baseUrl = `${environment.backend.protocol}://${environment.backend.host}`;
    if (environment.backend.port) {
