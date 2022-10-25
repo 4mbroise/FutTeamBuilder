@@ -24,9 +24,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdateComponent } from './update/update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { StatComponent } from './shared/stat/stat.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DialogComponent,
     FormComponent,
     UpdateComponent,
+    StatComponent,
     ],
   imports: [
     BrowserModule,
@@ -56,7 +59,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatFormFieldModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatGridListModule,
+    NgxChartsModule,
+    MatPaginatorModule,
+    FlexLayoutModule,
     ],
 
   providers: [],

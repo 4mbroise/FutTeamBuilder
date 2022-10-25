@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Player } from '../types/player.type';
+import { Stat } from '../types/stat.type';
 
 @Component({
   selector: 'app-card',
@@ -23,6 +24,10 @@ export class CardComponent implements OnInit {
    */
   get player(): Player {
     return this._player;
+  }
+
+  get stat(): Stat{
+    return {name:"test", value:90}
   }
 
   /**

@@ -1,4 +1,4 @@
 export type Stat = {
     value: number;
-    statName: string;
+    name: string;
 }

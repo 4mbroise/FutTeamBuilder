@@ -1,3 +1,17 @@
-<section>
-     <app-card [player]="player" *ngFor="let player of players"></app-card>
-</section>
+<mat-paginator aria-label="Select page" 
+     [pageIndex] = page 
+     [length]="length" 
+     [pageSize]="8"
+     [showFirstLastButtons] = "true"
+     (page)=handlePageEvent($event)>
+</mat-paginator>
+<div  fxLayout="inline">
+     <div fxFlex="100%" fxLayout="row wrap">
+          <div fxFlex="25%" *ngFor="let player of players">
+               <app-card [player]="player" ></app-card>
+          </div>
+     </div>
+</div>
+ 
+
+
