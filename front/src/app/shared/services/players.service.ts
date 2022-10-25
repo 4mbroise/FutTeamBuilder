@@ -26,7 +26,6 @@ export class PlayersService {
     // build all backend urls
     // @ts-ignore
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
-    Object.keys(this._backendURL).forEach(k => console.log("url !!! "+this._backendURL[k]));
   }
 
   fetchAll(): Observable<Player[]> {

@@ -30,6 +30,7 @@ import { StatComponent } from './shared/stat/stat.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+
 @NgModule({
   declarations: [
     AppComponent,

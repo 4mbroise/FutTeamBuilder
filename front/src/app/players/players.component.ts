@@ -31,7 +31,6 @@ export class PlayersComponent implements OnInit {
    * Returns private property _people
    */
   get players(): Player[] {
-    console.log(this._players.slice(0+8*this._page, 8*(this._page+1)))
     return this._players.slice(0+8*this._page, 8*(this._page+1));
   }
 
@@ -40,7 +39,6 @@ export class PlayersComponent implements OnInit {
   }
 
   get length(): number{
-    console.log(this._players.length / 8)
     return this._players.length
   }
 
