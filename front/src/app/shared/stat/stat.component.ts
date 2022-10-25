@@ -31,7 +31,7 @@ export class StatComponent {
     ];
   }
 
-  get customColors() : Function {
+  get customColors() : any {
     return () => {
         if(this._stat.value >= 80){
           return "#008000	";

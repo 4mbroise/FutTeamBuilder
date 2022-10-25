@@ -38,4 +38,11 @@ export class PlayersService {
       );
     }
 
+  /**
+   * Function to return one player for current id
+   */
+   fetchOne(id: string): Observable<Player> {
+    return this._http.get<Player>(this._backendURL.onePlayer.replace(':_id', id));
+  }
+
 }

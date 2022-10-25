@@ -5,17 +5,6 @@
   
   <mat-dialog-content>
     <form #f="ngForm">
-      <p *ngIf="isUpdateMode">
-        <mat-form-field class="full-width">
-          <input
-            matInput
-            placeholder="ID (disabled)"
-            disabled
-            name="id"
-            [ngModel]="model._id"
-          />
-        </mat-form-field>
-      </p>
   
       <table class="full-width" cellspacing="0">
         <tr>
@@ -72,7 +61,7 @@
                 <input
                   matInput
                   placeholder="Central Middle 3 *"
-                  [(ngModel)]="model.centerMiddle2"
+                  [(ngModel)]="model.centerMiddle3"
                   name="centerMiddle2"
                 />
             </mat-form-field>
@@ -104,7 +93,7 @@
                 <input
                     matInput
                     placeholder="Left Back *"
-                    [(ngModel)]="model.rightBack"
+                    [(ngModel)]="model.leftBack"
                     name="leftBack"
                 />
             </mat-form-field>

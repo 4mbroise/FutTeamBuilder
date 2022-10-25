@@ -32,7 +32,7 @@ export class TeamsService {
   fetch(): Observable<Team[]> {
     return this._http.get<Team[]>(this._backendURL.allTeams)
       .pipe(
-        filter((people: Team[]) => !!people),
+        filter((team: Team[]) => !!team),
         defaultIfEmpty([])
       );
   }
@@ -48,6 +48,7 @@ export class TeamsService {
    * Function to create a new team
    */
   create(team: Team): Observable<any> {
+    console.log(team);
     return this._http.post<Team>(this._backendURL.allTeams, team, this._options());
   }
 
@@ -55,6 +56,7 @@ export class TeamsService {
    * Function to update one Team
    */
   update(id: string, team: Team): Observable<any> {
+    console.log(team);
     return this._http.put<Team>(this._backendURL.oneTeam.replace(':_id', id), team, this._options());
   }
 

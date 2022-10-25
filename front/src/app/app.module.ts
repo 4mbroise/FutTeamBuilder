@@ -29,6 +29,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { StatComponent } from './shared/stat/stat.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TeamDetailsComponent } from './team-details/team-details.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormComponent,
     UpdateComponent,
     StatComponent,
+    TeamDetailsComponent,
     ],
   imports: [
     BrowserModule,

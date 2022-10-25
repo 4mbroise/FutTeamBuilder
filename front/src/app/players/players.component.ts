@@ -28,7 +28,7 @@ export class PlayersComponent implements OnInit {
   }
 
   /**
-   * Returns private property _people
+   * Returns private property _players
    */
   get players(): Player[] {
     return this._players.slice(0+8*this._page, 8*(this._page+1));

@@ -5,6 +5,8 @@ import { environment } from 'src/environments/environment';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { filter, map, mergeMap, Observable } from 'rxjs';
 import { Team } from '../shared/types/team.type';
+import { TeamsService } from '../shared/services/teams.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-teams',
@@ -17,15 +19,18 @@ export class TeamsComponent implements OnInit {
   private _teams: Team[];
   // private property to store all backend URLs
   private readonly _backendURL: any;
-   // private property to store dialogStatus value
-   private _dialogStatus: string;
-   // private property to store dialog reference
-   private _teamsDialog: MatDialogRef<DialogComponent, Team> | undefined;
- 
+    // private property to store dialogStatus value
+    private _dialogStatus: string;
+    // private property to store dialog reference
+    private _teamsDialog: MatDialogRef<DialogComponent, Team> | undefined;
+    // private property to store a page number
+    private _page:number = 0;
+
+
   /**
    * Component constructor
    */
-   constructor(private _http: HttpClient, private _dialog: MatDialog) {
+    constructor(private _http: HttpClient, private _dialog: MatDialog, private _teamsService : TeamsService) {
     this._teams = [];
     this._backendURL = {};
     this._dialogStatus = 'inactive';
@@ -41,19 +46,32 @@ export class TeamsComponent implements OnInit {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
   }
 
-  /**
+
+    /**
    * Returns private property _teams
    */
-  get teams(): Team[] {
-    return this._teams;
+    get teams(): Team[] {
+      return this._teams.slice(0+8*this._page, 8*(this._page+1));
+    }
+
+  get page(): number{
+    return this._page
   }
+
+  get length(): number{
+    return this._teams.length
+  }
+
+  handlePageEvent(pageEvent: PageEvent) {
+    this._page = pageEvent.pageIndex;
+  }
+
 
   /**
    * OnInit implementation
    */
   ngOnInit(): void {
-    this._http.get<Team[]>(this._backendURL.allTeams)
-      .subscribe({ next: (teams: Team[]) => this._teams = teams });
+    this._teamsService;
   }
 
   /**
@@ -112,9 +130,8 @@ export class TeamsComponent implements OnInit {
    * Add new team
    */
   private _add(team: Team | undefined): Observable<Team> {
-    return this._http.post<Team>(this._backendURL.allTeams, team, {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    });
+    return this._teamsService
+    .create(team as Team)
   }
 
 }
