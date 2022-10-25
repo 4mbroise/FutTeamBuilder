@@ -48,7 +48,7 @@ export class TeamsService {
    * Function to create a new team
    */
   create(team: Team): Observable<any> {
-    console.log(team);
+    delete team._id;
     return this._http.post<Team>(this._backendURL.allTeams, team, this._options());
   }
 
