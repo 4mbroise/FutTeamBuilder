@@ -10,7 +10,8 @@ export const environment = {
     port: '3000',
     endpoints: {
       allPlayers: '/player',
-      allTeams : '/team'
+      allTeams : '/team',
+      oneTeam : '/team/:_id,'
     }
   }
 };
