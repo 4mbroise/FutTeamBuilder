@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter, merge, mergeMap, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PlayersService } from '../shared/services/players.service';
+import { TeamsService } from '../shared/services/teams.service';
 import { Player } from '../shared/types/player.type';
 import { Team } from '../shared/types/team.type';
 
@@ -17,9 +19,15 @@ export class TeamDetailsComponent implements OnInit {
   private _team: Team;
   // private property to store all backend URLs
   private readonly _backendURL: any;
+  // private property to store flag to know if it's a team
+  private _isTeam: boolean;
+  //private property to store striker value
+  private _striker : Player;
 
-  constructor(private _http: HttpClient, private _teamDetailsService : PlayersService) {
+  constructor(private _http: HttpClient, private _teamDetailsService : TeamsService, private playerService : PlayersService, private _route : ActivatedRoute, private _router: Router) {
    this._team = {} as Team;
+   this._striker = {} as Player;
+   this._isTeam = false;
    this._backendURL = {};
 
    // build backend base url
@@ -35,12 +43,27 @@ export class TeamDetailsComponent implements OnInit {
 
 
  ngOnInit(): void {
-   this._http.get<Team[]>(this._backendURL.allTeams)
-     .subscribe({ next: (teams: Team[]) => this._team = teams[0] });
+
+   // this.playerService.fetchOne(this._team.leftForward);
+
+   merge(
+    this._route.params.pipe(
+      filter((params: any) => !!params._id),
+      mergeMap((params: any) => this._teamDetailsService.fetchOne(params._id)),
+      tap(() => this._isTeam = true)
+    )
+  )
+    .subscribe({
+      next: (team: Team) => this._team = team,
+      error: () => {
+        this._isTeam = true;
+      }
+    });
+    this.playerService.fetchOne(this._team.striker).subscribe({next : ( player : Player) => this._striker = player});
  }
 
- get striker(): Observable<Player>{
-  return this._teamDetailsService.fetchOne(this._team.striker);
+ get striker(): Player{
+  return this._striker;
  }
 
 }

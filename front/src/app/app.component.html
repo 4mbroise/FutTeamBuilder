@@ -1,9 +1,6 @@
 <!-- As a heading -->
-<div class="wrapper">
-    <mat-toolbar class="nav">
-      <span>My Application</span>
-    </mat-toolbar>
-    <div class="wrapper">
-      <router-outlet></router-outlet>
-    </div>
-</div>
+<mat-toolbar class="nav">
+  <span>My Application</span>
+  <button [routerLink]="'/acceuil'" mat-button><i class="fa fa-home fa-lg" aria-hidden="true"></i>Home</button>
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Player } from '../types/player.type';
 import { Stat } from '../types/stat.type';
 
@@ -9,18 +10,18 @@ import { Stat } from '../types/stat.type';
 })
 export class CardComponent implements OnInit {
 
-  // private property to store person value
+  // private property to store player value
   private _player: Player;
 
   /**
    * Component constructor
    */
   constructor() {
-    this._player = {longName:'Khaled'} as Player;
+    this._player = {} as Player;
   }
 
   /**
-   * Returns private property _person
+   * Returns private property _player
    */
   get player(): Player {
     return this._player;

@@ -6,13 +6,12 @@
         </a>
       </mat-card-title>
     </mat-card-title-group>
-    <div class="buttons-info">
-        <a mat-button title="Edit" [routerLink]="['/edit', team._id]">
-          <mat-icon svgIcon="icon-edit"></mat-icon>
-        </a>
-        <button mat-button title="Delete" (click)="delete(team)">
-          <mat-icon svgIcon="icon-delete"></mat-icon>
-        </button>
-      </div>
+    <mat-card-footer >
+      <mat-card-actions class="buttons">
+      <button mat-button color="accent" [routerLink]="['/teamDetails', team._id]"><mat-icon>add_circle</mat-icon></button>
+      <button mat-button color="accent" [routerLink]="['/edit', team._id]"> <mat-icon >edit</mat-icon></button>
+      <button mat-button color="accent" (click)="delete(team)"><mat-icon >delete</mat-icon></button>
+      </mat-card-actions>
+  </mat-card-footer>
 </mat-card>
   

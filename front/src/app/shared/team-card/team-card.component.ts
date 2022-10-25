@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Team } from '../types/team.type';
 
 @Component({
@@ -16,7 +17,7 @@ export class TeamCardComponent implements OnInit {
     /**
      * Component constructor
      */
-    constructor() {
+    constructor(private _route : ActivatedRoute, private _router: Router) {
       this._team = {} as Team;
       this._delete$ = new EventEmitter<Team>();
     }
@@ -55,4 +56,9 @@ export class TeamCardComponent implements OnInit {
     delete(team: Team): void {
       this._delete$.emit(team);
     }
+
+    showSetails() : void {
+      this._router.navigate(['/teamDetails/']);
+    }
+
 }
