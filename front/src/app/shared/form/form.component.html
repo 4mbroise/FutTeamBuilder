@@ -1,0 +1,135 @@
+<h2 mat-dialog-title *ngIf="isUpdateMode">
+    Update {{ model.name }}
+  </h2>
+  <h2 mat-dialog-title *ngIf="!isUpdateMode">Create new Team</h2>
+  
+  <mat-dialog-content>
+    <form #f="ngForm">
+      <p *ngIf="isUpdateMode">
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="ID (disabled)"
+            disabled
+            name="id"
+            [ngModel]="model._id"
+          />
+        </mat-form-field>
+      </p>
+  
+      <table class="full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="Team name *"
+                [(ngModel)]="model.name"
+                name="name"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="Striker *"
+                [(ngModel)]="model.striker"
+                name="striker"
+              />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Left Forward *"
+                  [(ngModel)]="model.leftForward"
+                  name="leftForward"
+                />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Right Forward *"
+                  [(ngModel)]="model.rightForward"
+                  name="rightForward"
+                />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Central Middle 1 *"
+                  [(ngModel)]="model.centerMiddle1"
+                  name="centerMiddle1"
+                />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Central Middle 2 *"
+                  [(ngModel)]="model.centerMiddle2"
+                  name="centerMiddle2"
+                />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Central Middle 3 *"
+                  [(ngModel)]="model.centerMiddle2"
+                  name="centerMiddle2"
+                />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                    <input
+                      matInput
+                      placeholder="Central Back 1 *"
+                      [(ngModel)]="model.centerBack1"
+                      name="centerBack1"
+                    />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                    matInput
+                    placeholder="Central Back 2 *"
+                    [(ngModel)]="model.centerBack2"
+                    name="centerBack2"
+                />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+            <input
+                matInput
+                placeholder="Right Back *"
+                [(ngModel)]="model.rightBack"
+                name="rightBack"
+            />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                    matInput
+                    placeholder="Left Back *"
+                    [(ngModel)]="model.rightBack"
+                    name="leftBack"
+                />
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input
+                    matInput
+                    placeholder="Goalkeeper *"
+                    [(ngModel)]="model.goalKeeper"
+                    name="goalKeeper"
+                />
+            </mat-form-field>
+            
+          </td>
+        </tr>
+      </table>
+  
+      <!-- required by API, so we put static content which is not editable but sent to the API -->
+      <!--<input type="hidden" [ngModel]="model.entity" name="entity" />-->
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+    <button mat-button color="primary" type="submit" (click)="submit()">
+      Save
+    </button>
+  </mat-dialog-actions>
+  

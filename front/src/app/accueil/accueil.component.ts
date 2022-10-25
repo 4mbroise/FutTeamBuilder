@@ -15,9 +15,7 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  goToBuildTeam() { this._router.navigate(['/build-team/']);}
-
+  
   goToPlayers() { this._router.navigate(['/players/']);}
 
   goToTeams() { this._router.navigate(['/teams/']); }

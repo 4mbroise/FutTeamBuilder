@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Team } from '../types/team.type';
 
 @Component({
@@ -8,34 +8,51 @@ import { Team } from '../types/team.type';
 })
 export class TeamCardComponent implements OnInit {
 
-  // private property to store person value
-  private _team: Team;
-
-  /**
-   * Component constructor
-   */
-  constructor() {
-    this._team = { name:'Liverpool'} as Team;
-  }
-
-  /**
-   * Returns private property _person
-   */
-  get team(): Team {
-    return this._team;
-  }
-
-  /**
-   * Sets private property _person
-   */
-  @Input()
-  set team(team: Team) {
-    this._team = team;
-  }
-
-  /**
-   * OnInit implementation
-   */
-  ngOnInit(): void {}
-
+    // private property to store team value
+    private _team: Team;
+    // private property to store delete$ value
+    private readonly _delete$: EventEmitter<Team>;
+  
+    /**
+     * Component constructor
+     */
+    constructor() {
+      this._team = {} as Team;
+      this._delete$ = new EventEmitter<Team>();
+    }
+  
+    /**
+     * Returns private property _team
+     */
+    get team(): Team {
+      return this._team;
+    }
+  
+    /**
+     * Sets private property _team
+     */
+    @Input()
+    set team(team: Team) {
+      this._team = team;
+    }
+  
+    /**
+     * Returns private property _delete$
+     */
+    @Output('deletePerson') get delete$(): EventEmitter<Team> {
+      return this._delete$;
+    }
+  
+    /**
+     * OnInit implementation
+     */
+    ngOnInit(): void {
+    }
+  
+    /**
+     * Function to emit event to delete current person
+     */
+    delete(team: Team): void {
+      this._delete$.emit(team);
+    }
 }

@@ -1,3 +1,7 @@
 <section>
     <app-team-card [team]="team" *ngFor="let team of teams"></app-team-card>
 </section>
+
+<button (click)="showDialog()" *ngIf="dialogStatus === 'inactive'" mat-fab color="accent">
+    <i class="material-icons">add</i>
+  </button>
