@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'acceuil', pathMatch: 'full'},
   { path: 'players',  component: PlayersComponent },
   { path: 'teams',  component: TeamsComponent },
-  { path: 'edit/:_id', component: UpdateComponent },
-  { path: 'player/:_id', component: PlayerComponent },
+  { path: 'edit/:id', component: UpdateComponent },
+  { path: 'player/:id', component: PlayerComponent },
   { path: 'teamDetails', component:TeamDetailsComponent}
 ];
 

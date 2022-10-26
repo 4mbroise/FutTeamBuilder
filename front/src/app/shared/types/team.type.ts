@@ -1,5 +1,5 @@
 export type Team = {
-    _id : any;
+    _id ?: any;
     striker: string
     leftForward: string
     rightForward: string

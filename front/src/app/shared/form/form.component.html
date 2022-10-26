@@ -1,110 +1,89 @@
-<h2 mat-dialog-title *ngIf="isUpdateMode">
-    Update {{ model.name }}
-  </h2>
-  <h2 mat-dialog-title *ngIf="!isUpdateMode">Create new Team</h2>
+<h2 mat-dialog-title *ngIf="isUpdateMode">Update  {{ form.get('name')?.value }}</h2>
+<h2 mat-dialog-title *ngIf="!isUpdateMode">Create new Team</h2>
   
   <mat-dialog-content>
-    <form #f="ngForm">
-  
+    <form novalidate [formGroup]="form">
+      <p *ngIf="isUpdateMode">
+        <span style="width:100%">ID (disabled)</span><br/>
+        <span style="width:100%">{{model._id}}</span>
+      </p>
+
       <table class="full-width" cellspacing="0">
         <tr>
           <td>
+            
             <mat-form-field class="full-width">
-              <input
-                matInput
-                placeholder="Team name *"
-                [(ngModel)]="model.name"
-                name="name"
-              />
+              <input matInput placeholder="Team name" formControlName="name" required name="name" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('name')?.dirty && form.get('name')?.hasError('required')">
+              name is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-              <input
-                matInput
-                placeholder="Striker *"
-                [(ngModel)]="model.striker"
-                name="striker"
-              />
+              <input matInput placeholder="Striker" formControlName="striker" required name="striker" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('striker')?.dirty && form.get('striker')?.hasError('required')">
+              Striker is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                  matInput
-                  placeholder="Left Forward *"
-                  [(ngModel)]="model.leftForward"
-                  name="leftForward"
-                />
+              <input matInput placeholder="left Forward" formControlName="leftForward" required name="leftForward" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('leftForward')?.dirty && form.get('leftForward')?.hasError('required')">
+              Left Forward is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                  matInput
-                  placeholder="Right Forward *"
-                  [(ngModel)]="model.rightForward"
-                  name="rightForward"
-                />
+              <input matInput placeholder="Right Forward" formControlName="rightForward" required name="rightForward" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('rightForward')?.dirty && form.get('rightForward')?.hasError('required')">
+              Right Forward is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                  matInput
-                  placeholder="Central Middle 1 *"
-                  [(ngModel)]="model.centerMiddle1"
-                  name="centerMiddle1"
-                />
+              <input matInput placeholder="center Middle 1" formControlName="centerMiddle1" required name="centerMiddle1" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('centerMiddle1')?.dirty && form.get('centerMiddle1')?.hasError('required')">
+              center Middle 1 is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                  matInput
-                  placeholder="Central Middle 2 *"
-                  [(ngModel)]="model.centerMiddle2"
-                  name="centerMiddle2"
-                />
+              <input matInput placeholder="center Middle 2" formControlName="centerMiddle2" required name="centerMiddle2" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('centerMiddle2')?.dirty && form.get('centerMiddle2')?.hasError('required')">
+              center Middle 2 is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                  matInput
-                  placeholder="Central Middle 3 *"
-                  [(ngModel)]="model.centerMiddle3"
-                  name="centerMiddle2"
-                />
+              <input matInput placeholder="center Middle 3" formControlName="centerMiddle3" required name="centerMiddle3" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('centerMiddle3')?.dirty && form.get('centerMiddle3')?.hasError('required')">
+              center Middle 3 is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                    <input
-                      matInput
-                      placeholder="Central Back 1 *"
-                      [(ngModel)]="model.centerBack1"
-                      name="centerBack1"
-                    />
+              <input matInput placeholder="center Back 1" formControlName="centerBack1" required name="centerBack1" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('centerBack1')?.dirty && form.get('centerBack1')?.hasError('required')">
+              center Back 1 is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                    matInput
-                    placeholder="Central Back 2 *"
-                    [(ngModel)]="model.centerBack2"
-                    name="centerBack2"
-                />
+              <input matInput placeholder="center Back 2" formControlName="centerBack2" required name="centerBack2" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('centerBack2')?.dirty && form.get('centerBack2')?.hasError('required')">
+              center Back 2 is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-            <input
-                matInput
-                placeholder="Right Back *"
-                [(ngModel)]="model.rightBack"
-                name="rightBack"
-            />
+              <input matInput placeholder="right Back" formControlName="rightBack" required name="rightBack" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('rightBack')?.dirty && form.get('rightBack')?.hasError('required')">
+              right Back is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                    matInput
-                    placeholder="Left Back *"
-                    [(ngModel)]="model.leftBack"
-                    name="leftBack"
-                />
+              <input matInput placeholder="left Back" formControlName="leftBack" required name="leftBack" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('leftBack')?.dirty && form.get('leftBack')?.hasError('required')">
+              Left Back is <strong>required</strong>
+            </mat-error>
             <mat-form-field class="full-width">
-                <input
-                    matInput
-                    placeholder="Goalkeeper *"
-                    [(ngModel)]="model.goalKeeper"
-                    name="goalKeeper"
-                />
+              <input matInput placeholder="goalKeeper" formControlName="goalKeeper" required name="goalKeeper" />
             </mat-form-field>
+            <mat-error *ngIf="form.get('goalKeeper')?.dirty && form.get('goalKeeper')?.hasError('required')">
+              goalKeeper is <strong>required</strong>
+            </mat-error>
             
           </td>
         </tr>
@@ -117,8 +96,6 @@
   
   <mat-dialog-actions align="end">
     <button mat-button type="button" (click)="cancel()">Cancel</button>
-    <button mat-button color="primary" type="submit" (click)="submit()">
-      Save
-    </button>
+    <button mat-button color="primary" type="submit" (click)="submit(form.value)" [disabled]="form.invalid">Save</button>
   </mat-dialog-actions>
   
