@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { EmailValidator, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Team } from '../types/team.type';
 
 @Component({
@@ -17,6 +18,9 @@ export class FormComponent implements OnInit, OnChanges {
   private readonly _cancel$: EventEmitter<void>;
   // private property to store submit$ value
   private readonly _submit$: EventEmitter<Team>;
+  // private property to store form value
+  private readonly _form: FormGroup;
+
 
   /**
    * Component constructor
@@ -26,6 +30,7 @@ export class FormComponent implements OnInit, OnChanges {
     this._isUpdateMode = false;
     this._submit$ = new EventEmitter<Team>();
     this._cancel$ = new EventEmitter<void>();
+    this._form = this._buildForm();
   }
 
   /**
@@ -41,6 +46,13 @@ export class FormComponent implements OnInit, OnChanges {
    */
   get model(): Team {
     return this._model;
+  }
+
+  /**
+   * Returns private property _form
+   */
+   get form(): FormGroup {
+    return this._form;
   }
 
   /**
@@ -81,7 +93,6 @@ export class FormComponent implements OnInit, OnChanges {
       this._isUpdateMode = true;
     } else {
       this._model = {
-        _id : '',
         striker: '',
         leftForward: '',
         rightForward: '',
@@ -97,6 +108,8 @@ export class FormComponent implements OnInit, OnChanges {
         }
       };
       this._isUpdateMode = false;
+      // update form's values with model
+    this._form.patchValue(this._model);
     }
     
   /**
@@ -107,10 +120,31 @@ export class FormComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Function to emit event to submit form and person
+   * Function to emit event to submit form and team
    */
-  submit(): void {
-    this._submit$.emit(this._model);
+  submit(team: Team): void {
+    this._submit$.emit(team);
+  }
+
+  /**
+   * Function to build our form
+   */
+   private _buildForm(): FormGroup {
+    return new FormGroup({
+      id: new FormControl(),
+      name: new FormControl(),
+      striker: new FormControl(),
+      leftForward: new FormControl(),
+      rightForward: new FormControl(),
+      centerMiddle1: new FormControl(),
+      centerMiddle2: new FormControl(),
+      centerMiddle3: new FormControl(),
+      leftBack: new FormControl(),
+      centerBack1: new FormControl(),
+      centerBack2: new FormControl(),
+      rightBack: new FormControl(),
+      goalKeeper : new FormControl(),
+    });
   }
 }
   

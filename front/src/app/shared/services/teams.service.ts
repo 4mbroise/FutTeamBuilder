@@ -41,7 +41,7 @@ export class TeamsService {
    * Function to return one team for current id
    */
   fetchOne(id: string): Observable<Team> {
-    return this._http.get<Team>(this._backendURL.oneTeam.replace(':_id', id));
+    return this._http.get<Team>(this._backendURL.oneTeam.replace(':id', id));
   }
 
   /**
@@ -57,14 +57,14 @@ export class TeamsService {
    */
   update(id: string, team: Team): Observable<any> {
     console.log(team);
-    return this._http.put<Team>(this._backendURL.oneTeam.replace(':_id', id), team, this._options());
+    return this._http.patch<Team>(this._backendURL.oneTeam.replace(':id', id), team, this._options());
   }
 
   /**
    * Function to delete one team for current id
    */
   delete(id: string): Observable<string> {
-    return this._http.delete(this._backendURL.oneTeam.replace(':_id', id))
+    return this._http.delete(this._backendURL.oneTeam.replace(':id', id))
       .pipe(
         map(() => id)
       );

@@ -19,7 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './shared/dialog/dialog.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule , FormGroup } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdateComponent } from './update/update.component';
@@ -67,6 +67,7 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
     NgxChartsModule,
     MatPaginatorModule,
     FlexLayoutModule,
+    ReactiveFormsModule, 
     ],
 
   providers: [],

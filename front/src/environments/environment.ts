@@ -11,8 +11,8 @@ export const environment = {
     endpoints: {
       allPlayers: '/player',
       allTeams : '/team',
-      oneTeam : '/team/:_id',
-      onePlayer : '/player/:_id',
+      oneTeam : '/team/:id',
+      onePlayer : '/player/:id',
     }
   }
 };
