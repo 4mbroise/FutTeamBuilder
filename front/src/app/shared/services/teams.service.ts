@@ -56,8 +56,8 @@ export class TeamsService {
    * Function to update one Team
    */
   update(id: string, team: Team): Observable<any> {
-    console.log(team);
-    return this._http.patch<Team>(this._backendURL.oneTeam.replace(':id', id), team, this._options());
+    console.log("update en cours : " + team.name);
+    return this._http.put<Team>(this._backendURL.oneTeam.replace(':id', id), team, this._options());
   }
 
   /**
