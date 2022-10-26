@@ -31,6 +31,7 @@ export class TeamBuilderComponent implements OnInit, OnChanges {
   private _goalKeeper: Player[] = []
 
   teamName: string = "Fst FC"
+  setDone = false
 
   private _players: Player[];
 
@@ -52,7 +53,8 @@ export class TeamBuilderComponent implements OnInit, OnChanges {
       .fetchAll()
       .subscribe( { next: (player: Player[]) => {this._players = player}})
 
-    this._playerService
+    if(this.setDone){
+      this._playerService
       .fetchOne(this._model.striker)
       .subscribe( { next: (player: Player) => this._striker = [player]} );
       
@@ -97,6 +99,8 @@ export class TeamBuilderComponent implements OnInit, OnChanges {
       .subscribe( { next: (player: Player) => this._goalKeeper = [player]} );
 
       this.teamName = this._model.name;
+    }
+    
   }
 
     /** Predicate function that only allows even numbers to be dropped into a list. */
@@ -149,13 +153,17 @@ export class TeamBuilderComponent implements OnInit, OnChanges {
 
     @Input()
     set model(team: Team) {
-      this._model = team;
+      if(!!team){
+        this.setDone = true
+        this._model = team;
+      }
     }
     /**
      * Function to emit event to submit form and person
      */
     submit(): void {
 
+      console.log("model")
       console.log(this._model)
 
       this._model.name = this.teamName;
