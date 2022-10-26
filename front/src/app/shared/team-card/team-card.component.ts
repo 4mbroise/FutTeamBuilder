@@ -17,7 +17,7 @@ export class TeamCardComponent implements OnInit {
     /**
      * Component constructor
      */
-    constructor(private _route : ActivatedRoute, private _router: Router) {
+    constructor(private _route : ActivatedRoute) {
       this._team = {} as Team;
       this._delete$ = new EventEmitter<Team>();
     }
@@ -40,7 +40,8 @@ export class TeamCardComponent implements OnInit {
     /**
      * Returns private property _delete$
      */
-    @Output('deletePerson') get delete$(): EventEmitter<Team> {
+    @Output('deletePerson') 
+    get delete$(): EventEmitter<Team> {
       return this._delete$;
     }
   
@@ -51,14 +52,12 @@ export class TeamCardComponent implements OnInit {
     }
   
     /**
-     * Function to emit event to delete current person
+     * Function to emit event to delete current team
      */
     delete(team: Team): void {
       this._delete$.emit(team);
     }
 
-    showSetails() : void {
-      this._router.navigate(['/teamDetails/']);
-    }
+
 
 }
