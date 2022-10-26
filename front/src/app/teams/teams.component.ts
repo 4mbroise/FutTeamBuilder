@@ -1,4 +1,3 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
@@ -6,8 +5,7 @@ import { DialogComponent } from '../shared/dialog/dialog.component';
 import { filter, map, mergeMap, Observable } from 'rxjs';
 import { Team } from '../shared/types/team.type';
 import { TeamsService } from '../shared/services/teams.service';
-import { PageEvent } from '@angular/material/paginator';
-import { Player } from '../shared/types/player.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teams',
@@ -24,14 +22,13 @@ export class TeamsComponent implements OnInit {
     private _dialogStatus: string;
     // private property to store dialog reference
     private _teamsDialog: MatDialogRef<DialogComponent, Team> | undefined;
-    // private property to store a page number
-    private _page:number = 0;
+ 
 
 
   /**
    * Component constructor
    */
-    constructor(private _http: HttpClient, private _dialog: MatDialog, private _teamsService : TeamsService) {
+    constructor(private _router: Router, private _dialog: MatDialog, private _teamsService : TeamsService) {
     this._teams = [];
     this._backendURL = {};
     this._dialogStatus = 'inactive';
@@ -52,20 +49,8 @@ export class TeamsComponent implements OnInit {
    * Returns private property _teams
    */
     get teams(): Team[] {
-      return this._teams.slice(0+8*this._page, 8*(this._page+1));
+      return this._teams;
     }
-
-  get page(): number{
-    return this._page
-  }
-
-  get length(): number{
-    return this._teams.length
-  }
-
-  handlePageEvent(pageEvent: PageEvent) {
-    this._page = pageEvent.pageIndex;
-  }
 
 
   /**
@@ -88,8 +73,8 @@ export class TeamsComponent implements OnInit {
    * Function to delete one team
    */
   delete(team: Team): void {
-    console.log(team._id);
-   this._teamsService
+    console.log("delete a marché");
+    this._teamsService
       .delete(team._id as string)
       .subscribe((id: string) => this._teams = this._teams.filter((t: Team) => t._id !== id));
   }
@@ -111,11 +96,12 @@ export class TeamsComponent implements OnInit {
     });
 
     // subscribe to afterClosed observable to set dialog status and do process
-    this._teamsDialog
-      .afterClosed()
+    this._teamsDialog.afterClosed()
       .pipe(
         filter((team: Team | undefined) => !!team),
         map((team: Team | undefined) => {
+          // delete obsolete attributes in original object which are not required in the API
+          delete team?._id;
 
           return team;
         }),

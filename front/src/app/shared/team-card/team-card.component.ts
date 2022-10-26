@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Team } from '../types/team.type';
 
 @Component({
@@ -17,7 +17,7 @@ export class TeamCardComponent implements OnInit {
     /**
      * Component constructor
      */
-    constructor(private _route : ActivatedRoute) {
+    constructor(private _router : Router) {
       this._team = {} as Team;
       this._delete$ = new EventEmitter<Team>();
     }
@@ -40,7 +40,7 @@ export class TeamCardComponent implements OnInit {
     /**
      * Returns private property _delete$
      */
-    @Output('deletePerson') 
+    @Output('deleteTeam') 
     get delete$(): EventEmitter<Team> {
       return this._delete$;
     }
