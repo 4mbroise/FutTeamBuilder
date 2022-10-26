@@ -26,6 +26,7 @@ export class DialogComponent implements OnInit {
    * OnInit implementation
    */
   ngOnInit(): void {
+    console.log(this._team)
   }
 
   /**

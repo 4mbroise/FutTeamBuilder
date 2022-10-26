@@ -93,6 +93,7 @@ export class FormComponent implements OnInit, OnChanges {
       this._isUpdateMode = true;
     } else {
       this._model = {
+        _id:this._model._id,
         striker: '',
         leftForward: '',
         rightForward: '',
@@ -123,6 +124,7 @@ export class FormComponent implements OnInit, OnChanges {
    * Function to emit event to submit form and team
    */
   submit(team: Team): void {
+    console.log("azezaezae "+this._model._id)
     this._submit$.emit(team);
   }
 
