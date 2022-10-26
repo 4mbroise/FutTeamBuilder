@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { TeamsService } from '../shared/services/teams.service';
 import { Team } from '../shared/types/team.type';
 
 @Component({
@@ -15,7 +16,7 @@ export class TeamComponent implements OnInit {
   // private property to store all backend URLs
   private readonly _backendURL: any;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _teamService : TeamsService) {
    this._team = {} as Team;
    this._backendURL = {};
 
@@ -31,15 +32,15 @@ export class TeamComponent implements OnInit {
  }
 
   /**
-  * Returns private property _person
+  * Returns private property _team
   */
    get team(): Team {
      return this._team;
    }
 
  ngOnInit(): void {
-   this._http.get<Team[]>(this._backendURL.allTeams)
-     .subscribe({ next: (teams: Team[]) => this._team = teams[0] });
+     this._teamService
+     .fetchOne(this._team._id).subscribe({ next: (team : Team) => this._team = team });
  }
 
 }

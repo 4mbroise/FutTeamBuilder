@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Player } from '../shared/types/player.type';
+import { PlayersService } from '../shared/services/players.service';
 
 @Component({
   selector: 'app-player',
@@ -14,7 +15,7 @@ export class PlayerComponent implements OnInit {
    // private property to store all backend URLs
    private readonly _backendURL: any;
 
-   constructor(private _http: HttpClient) {
+   constructor(private _playerService : PlayersService) {
     this._player = {} as Player;
     this._backendURL = {};
 
@@ -37,8 +38,8 @@ export class PlayerComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this._http.get<Player[]>(this._backendURL.allPlayers)
-      .subscribe({ next: (players: Player[]) => this._player = players[0] });
+      this._playerService
+      .fetchOne(this._player._id).subscribe({ next: (player : Player) => this._player = player });
   }
 
 }

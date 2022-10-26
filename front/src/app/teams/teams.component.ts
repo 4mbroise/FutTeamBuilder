@@ -88,6 +88,7 @@ export class TeamsComponent implements OnInit {
    * Function to delete one team
    */
   delete(team: Team): void {
+    console.log(team._id);
    this._teamsService
       .delete(team._id as string)
       .subscribe((id: string) => this._teams = this._teams.filter((t: Team) => t._id !== id));
