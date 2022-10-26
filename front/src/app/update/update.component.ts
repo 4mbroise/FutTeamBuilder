@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from '../shared/dialog/dialog.component';
 import { environment } from '../../environments/environment';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { filter, map, mergeMap, Observable } from 'rxjs';
 import { Team } from '../shared/types/team.type';
@@ -18,8 +18,6 @@ export class UpdateComponent implements OnInit {
   // private property to store dialog reference
   private _teamDialog: MatDialogRef<DialogComponent, Team> | undefined;
 
-  private idTeam:string;
-
   /**
     * Component constructor
     */
@@ -29,20 +27,12 @@ export class UpdateComponent implements OnInit {
     private _dialog: MatDialog,
     private _service : TeamsService
   ) {
-    this.idTeam = "";
   }
 
   /**
     * OnInit implementation
     */
   ngOnInit(): void {
-    this._route.paramMap.subscribe((param:ParamMap) => {
-      if(!!param.get("id")){
-        this.idTeam = param.get("id")!;
-        console.log(param.get("id"))
-      }
-    })
-
     this._route.params
       .pipe(
         map((params: any) => params.id),
@@ -59,7 +49,8 @@ export class UpdateComponent implements OnInit {
   private _initModal(team: Team): void {
     // create modal with initial data inside
     this._teamDialog = this._dialog.open(DialogComponent, {
-      width: '500px',
+      width: '100%',
+      height: '100%',
       disableClose: true,
       data: team,
     });
@@ -70,8 +61,7 @@ export class UpdateComponent implements OnInit {
         filter((team: Team | undefined) => !!team),
         map((team: Team | undefined) => {
           // get team id
-          console.log(team)
-          const id = this.idTeam;
+          const id = team?._id;
           // delete obsolete attributes in original object which are not required in the API
           delete team?._id
           return { id, update: team };
@@ -88,6 +78,7 @@ export class UpdateComponent implements OnInit {
 
   
 }
+
 
 
 

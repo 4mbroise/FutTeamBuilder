@@ -1,5 +1,5 @@
 import { CdkDrag, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { PlayersService } from '../shared/services/players.service';
 import { Player } from '../shared/types/player.type';
 import { Team } from '../shared/types/team.type';
@@ -49,8 +49,54 @@ export class TeamBuilderComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this._playerService
-    .fetchAll()
-    .subscribe( { next: (player: Player[]) => this._players = player} )
+      .fetchAll()
+      .subscribe( { next: (player: Player[]) => {this._players = player}})
+
+    this._playerService
+      .fetchOne(this._model.striker)
+      .subscribe( { next: (player: Player) => this._striker = [player]} );
+      
+      this._playerService
+      .fetchOne(this._model.leftForward)
+      .subscribe( { next: (player: Player) => this._leftForward = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.rightForward)
+      .subscribe( { next: (player: Player) => this._rightForward = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.centerMiddle1)
+      .subscribe( { next: (player: Player) => this._centerMiddle1 = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.centerMiddle2)
+      .subscribe( { next: (player: Player) => this._centerMiddle2 = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.centerMiddle3)
+      .subscribe( { next: (player: Player) => this._centerMiddle3 = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.leftBack)
+      .subscribe( { next: (player: Player) => this._leftBack = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.centerBack1)
+      .subscribe( { next: (player: Player) => this._centerBack1 = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.centerBack2)
+      .subscribe( { next: (player: Player) => this._centerBack2 = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.rightBack)
+      .subscribe( { next: (player: Player) => this._rightBack = [player]} );
+            
+      this._playerService
+      .fetchOne(this._model.goalKeeper)
+      .subscribe( { next: (player: Player) => this._goalKeeper = [player]} );
+
+      this.teamName = this._model.name;
   }
 
     /** Predicate function that only allows even numbers to be dropped into a list. */
@@ -98,7 +144,13 @@ export class TeamBuilderComponent implements OnInit, OnChanges {
      cancel(): void {
       this._cancel$.emit();
     }
-  
+
+
+
+    @Input()
+    set model(team: Team) {
+      this._model = team;
+    }
     /**
      * Function to emit event to submit form and person
      */
@@ -168,3 +220,4 @@ export class TeamBuilderComponent implements OnInit, OnChanges {
 
 
 }
+
