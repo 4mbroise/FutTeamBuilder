@@ -1,6 +1,77 @@
-<div class="fullscreen-dialog">
-    <button mat-button type="button" (click)="cancel()">Cancel</button>
-    <button mat-button color="primary" type="submit" (click)="submit()">
-    Save
-    </button>
+<div fxFlexFill>
+    <div fxLayout="row" fxFlexFill >
+        <div class="col1" fxFlex="85" fxLayout="column">
+            <div fxLayout="row" fxFlex="25" fxLayoutAlign="center center">
+                <div fxFlex="25" fxLayoutAlign="center center" cdkDropList #listOne="cdkDropList" [cdkDropListConnectedTo]="[listTwo]">
+                    <div cdkDropList #listOne="cdkDropList" [cdkDropListConnectedTo]="[listTwo]">
+                        <div class="example-box" *ngFor="let item of leftForward" cdkDrag>
+                        
+                        </div>
+                    </div>
+                    <div>TEST</div>
+                </div>
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    2
+                </div>
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    3
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="8%" fxFlex="25" fxLayoutAlign="center center">
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    2
+                </div>
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    3
+                </div>
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    3
+                </div>
+            </div>
+            <div fxLayout="row" fxFlex="25" fxLayoutGap="2%" fxLayoutAlign="center center">
+            
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    1
+                </div>
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    2
+                </div>
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    2
+                </div>
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    3
+                </div>
+            </div>
+            <div fxLayout="row" fxFlex="25" fxLayoutAlign="center center">
+                <div fxFlex="25" fxLayoutAlign="center center">
+                    1
+                </div>
+            </div>
+        </div>
+        <div class="col2" fxFlex="15">
+            <cdk-virtual-scroll-viewport  itemSize="20"  class="viewport">
+                <div cdkDropList #listTwo="cdkDropList" class="example-list" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[listOne]">
+                    <div cdkDrag  *cdkVirtualFor="let player of players" class="example-item">
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+
+                    </div>
+                </div>
+            </cdk-virtual-scroll-viewport>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center" class="footer">
+        <button mat-button type="button" (click)="cancel()">Cancel</button>
+        <button mat-button color="primary" type="submit" (click)="submit()">
+        Save
+        </button>
+    </div>
 </div>

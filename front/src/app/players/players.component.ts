@@ -54,7 +54,6 @@ export class PlayersComponent implements OnInit {
     this._playerService
       .fetchAll()
       .subscribe( { next: (player: Player[]) => this._players = player} )
-
   }
 
 }

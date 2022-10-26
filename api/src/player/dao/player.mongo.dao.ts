@@ -25,7 +25,6 @@ export class PlayerMongo implements PlayerDao{
         return from(this._playerModel.findByIdAndUpdate(id, player, {new:true, runValidators:true}).lean());
     }
     remove(id: string): Observable<Player> {
-        console.log("remove")
         return from(this._playerModel.findByIdAndRemove(id).lean())
     }
     

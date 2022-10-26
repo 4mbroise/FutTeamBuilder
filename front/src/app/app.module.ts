@@ -31,6 +31,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TeamDetailsComponent } from './team-details/team-details.component';
 import { TeamBuilderComponent } from './team-builder/team-builder.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -70,6 +72,8 @@ import { TeamBuilderComponent } from './team-builder/team-builder.component';
     MatPaginatorModule,
     FlexLayoutModule,
     ReactiveFormsModule, 
+    ScrollingModule,
+    DragDropModule
     ],
 
   providers: [],
