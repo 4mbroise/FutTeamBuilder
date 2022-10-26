@@ -7,6 +7,7 @@ import { filter, map, mergeMap, Observable } from 'rxjs';
 import { Team } from '../shared/types/team.type';
 import { TeamsService } from '../shared/services/teams.service';
 import { PageEvent } from '@angular/material/paginator';
+import { Player } from '../shared/types/player.type';
 
 @Component({
   selector: 'app-teams',
@@ -71,7 +72,9 @@ export class TeamsComponent implements OnInit {
    * OnInit implementation
    */
   ngOnInit(): void {
-    this._teamsService;
+    this._teamsService
+    .fetch()
+    .subscribe({ next: (teams: Team[]) => this._teams = teams });
   }
 
   /**
@@ -85,14 +88,9 @@ export class TeamsComponent implements OnInit {
    * Function to delete one team
    */
   delete(team: Team): void {
-    this._http
-      .delete(this._backendURL.onePeople.replace(':id', team._id))
-      .subscribe({
-        next: () =>
-          (this._teams = this._teams.filter(
-            (t: Team) => t._id !== team._id
-          )),
-      });
+   this._teamsService
+      .delete(team._id as string)
+      .subscribe((id: string) => this._teams = this._teams.filter((t: Team) => t._id !== id));
   }
 
   /**
