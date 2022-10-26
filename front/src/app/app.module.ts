@@ -33,6 +33,8 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
 import { TeamBuilderComponent } from './team-builder/team-builder.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 @NgModule({
@@ -73,7 +75,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     FlexLayoutModule,
     ReactiveFormsModule, 
     ScrollingModule,
-    DragDropModule
+    DragDropModule,
+    MatChipsModule
     ],
 
   providers: [],

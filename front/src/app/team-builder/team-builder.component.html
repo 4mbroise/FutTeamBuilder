@@ -2,57 +2,200 @@
     <div fxLayout="row" fxFlexFill >
         <div class="col1" fxFlex="85" fxLayout="column">
             <div fxLayout="row" fxFlex="25" fxLayoutAlign="center center">
-                <div fxFlex="25" fxLayoutAlign="center center" cdkDropList #listOne="cdkDropList" [cdkDropListConnectedTo]="[listTwo]">
-                    <div cdkDropList #listOne="cdkDropList" [cdkDropListConnectedTo]="[listTwo]">
-                        <div class="example-box" *ngFor="let item of leftForward" cdkDrag>
-                        
-                        </div>
+
+
+
+
+                <div #a="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="leftForward" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Left Forward</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of leftForward" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
                     </div>
-                    <div>TEST</div>
                 </div>
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    2
+                
+                <div #b="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="striker" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Striker</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of striker" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    3
+                <div #c="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="rightForward" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Right Forward</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of rightForward" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
             </div>
             <div fxLayout="row" fxLayoutGap="8%" fxFlex="25" fxLayoutAlign="center center">
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    2
+                <div #d="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="centerMiddle1" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Center Middle</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of centerMiddle1" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    3
+                <div #e="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="centerMiddle2" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Center Middle</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of centerMiddle2" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    3
+                <div #f="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="centerMiddle3" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Center Middle</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of centerMiddle3" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
             </div>
             <div fxLayout="row" fxFlex="25" fxLayoutGap="2%" fxLayoutAlign="center center">
             
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    1
+                <div #g="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="leftBack" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Left Back</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of leftBack" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    2
+                <div #h="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="centerBack1" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Center Back</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of centerBack1" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    2
+                <div #i="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="centerBack2" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Center Back</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of centerBack2" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    3
+                <div #j="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="rightBack" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Right Back</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of rightBack" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
             </div>
             <div fxLayout="row" fxFlex="25" fxLayoutAlign="center center">
-                <div fxFlex="25" fxLayoutAlign="center center">
-                    1
+                <div #k="cdkDropList" [cdkDropListConnectedTo]="[listTwo,a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="goalKeeper" fxLayout="column-reverse"  fxFlex="25" fxLayoutAlign="center center" (cdkDropListDropped)="drop($event)" cdkDropList >
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>Goal Keeper</mat-chip>
+                    </mat-chip-list>
+                    <div *ngFor="let player of goalKeeper" cdkDrag>
+                        <!--ITEMS-->
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-title>{{ player.shortName }}</mat-card-title>
+                                <img mat-card-avatar src="{{player.playerFaceUrl}}">
+                                <mat-card-subtitle>{{player.playerPositions}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{ player.valueEur | currency:'EUR':true }}</mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col2" fxFlex="15">
             <cdk-virtual-scroll-viewport  itemSize="20"  class="viewport">
-                <div cdkDropList #listTwo="cdkDropList" class="example-list" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[listOne]">
-                    <div cdkDrag  *cdkVirtualFor="let player of players" class="example-item">
+                <div cdkDropList #listTwo="cdkDropList" class="example-list" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[a,b,c,d,e,f,g,h,i,j,k]" [cdkDropListData]="players">
+                    <div cdkDrag  *ngFor="let player of players" class="example-item">
                         <!--ITEMS-->
                         <mat-card>
                             <mat-card-header>
@@ -68,9 +211,14 @@
             </cdk-virtual-scroll-viewport>
         </div>
     </div>
-    <div fxLayout="row" fxLayoutAlign="center" class="footer">
-        <button mat-button type="button" (click)="cancel()">Cancel</button>
-        <button mat-button color="primary" type="submit" (click)="submit()">
+    
+    <div fxLayout="row"  fxLayoutGap="15px" flexG fxLayoutAlign="center center" class="footer">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Team Name</mat-label>
+            <input [(ngModel)]="teamName" type="text" matInput value="FST FC">
+        </mat-form-field>
+        <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="accent" [disabled]="allPlayerProvided" type="submit" (click)="submit()">
         Save
         </button>
     </div>
