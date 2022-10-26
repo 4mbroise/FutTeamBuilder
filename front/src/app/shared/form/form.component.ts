@@ -106,8 +106,8 @@ export class FormComponent implements OnInit, OnChanges {
         goalKeeper: '',
         name: '' ,
         }
+        this._isUpdateMode = false;
       };
-      this._isUpdateMode = false;
       // update form's values with model
     this._form.patchValue(this._model);
     }
